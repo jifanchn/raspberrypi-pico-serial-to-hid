@@ -175,7 +175,7 @@ void hid_task(void) {
             int8_t const delta = 5;
 
             // no button, right + down, no scroll pan
-            tud_hid_mouse_report(REPORT_ID_MOUSE, 0x00, delta, delta, 0, 0);
+            // tud_hid_mouse_report(REPORT_ID_MOUSE, 0x00, delta, delta, 0, 0);
 
             // delay a bit before attempt to send keyboard report
             board_delay(10);
@@ -192,12 +192,12 @@ void hid_task(void) {
             uint8_t keycode[6] = {0};
             keycode[0] = HID_KEY_A;
 
-            tud_hid_keyboard_report(REPORT_ID_KEYBOARD, 0, keycode);
+            // tud_hid_keyboard_report(REPORT_ID_KEYBOARD, 0, keycode);
 
             has_key = true;
         } else {
             // send empty key report if previously has key pressed
-            if (has_key) tud_hid_keyboard_report(REPORT_ID_KEYBOARD, 0, NULL);
+            // if (has_key) tud_hid_keyboard_report(REPORT_ID_KEYBOARD, 0, NULL);
             has_key = false;
         }
     }

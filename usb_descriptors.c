@@ -90,18 +90,19 @@ uint8_t const *tud_hid_descriptor_report_cb(void) {
 enum {
     ITF_NUM_HID,
     ITF_NUM_CDC,
+    ITF_NUM_CDC_DATA,
     ITF_NUM_TOTAL
 };
 
 #define  CONFIG_TOTAL_LEN  (TUD_CONFIG_DESC_LEN + TUD_HID_DESC_LEN + TUD_CDC_DESC_LEN)
-
+// #define  CONFIG_TOTAL_LEN  (TUD_CONFIG_DESC_LEN + TUD_HID_DESC_LEN)
 #define EPNUM_HID   0x81
 #define EPNUM_CDC_CMD 0x82
 #define EPNUM_CDC_IN 0x83
-#define EPNUM_CDC_OUT 0x02
+#define EPNUM_CDC_OUT 0x03
 
-#define USB_STR_HID 4
-#define USB_STR_CDC 5
+#define USB_STR_HID 0
+#define USB_STR_CDC 4
 
 
 uint8_t const desc_configuration[] =
@@ -136,8 +137,7 @@ char const *string_desc_arr[] =
                 "TinyUSB",                      // 1: Manufacturer
                 "TinyUSB Device",               // 2: Product
                 "123456",                       // 3: Serials, should use chip ID
-                "Pico HID",                     // 4: HID String
-                "Pico Serial",                  // 5: CDC String
+                "Pico Serial",                  // 4: CDC String
         };
 
 static uint16_t _desc_str[32];
